@@ -2,14 +2,14 @@ from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen
 import pandas as pd
 
-data = []
 
 def getCardapio(url):
-    
-    html = urlopen(url)
-    res = soup(html.read(),"html5lib");
 
-    table = res.find('table')
+    data = []
+
+    html = urlopen(url)
+    res = soup(html.read(),"html5lib")
+
     tbody = res.find('tbody')
 
     tableRows = tbody.find_all('tr')
@@ -24,11 +24,10 @@ def getCardapio(url):
             data.append(output_row)
 
     df = pd.DataFrame(data)
-    dfLunch = df.iloc[0:7]
+    dfLunch = df.iloc[0:8]
     dfLunch.reset_index(drop=True)
 
     dfDinner = df.iloc[8:16]
-    dfDinner.reset_index(drop=True)
 
     new_header = dfLunch.iloc[0]
     new_header[4] = "Quinta-Feira"
@@ -41,6 +40,8 @@ def getCardapio(url):
 
     if (dfLunch is not None) and (dfDinner is not None):
         print("Resultado pronto!")
+        print(url)
+        print(dfLunch, dfDinner)
         return [dfLunch, dfDinner]
     else:
         print("Erro")

@@ -18,7 +18,7 @@ diasSemana ={
     "Monday": "Segunda-Feira",
     "Tuesday": "Terça-Feira",
     "Wednesday": "Quarta-Feira",
-    "Thursday": "Quinta-feira",
+    "Thursday": "Quinta-Feira",
     "Friday": "Sexta-Feira"
 }
 
@@ -43,7 +43,9 @@ wordToEmoji = {
     "Prato Vegetariano": "🥦",
     "Guarnição": "🥘",
     "Acompanhamentos": "🍛",
+    "Acompanhamento": "🍛",
     "Sobremesa": "🍬",
+    "Sobremesa ": "🍬",
     "Refresco": "🥤"
 }
 
@@ -57,17 +59,33 @@ if diaDaSemana != "Sábado" and diaDaSemana != "Domingo":
 else:
     diaDaSemanaText = diaDaSemana
 
+#função para pegar e transformar em string de tweet o cardapio completo de almoço e jantar de um campus específico
+def getCardapioCampus(keyCampus):
+
+    print("entrou")
+
+    campusName = campus[keyCampus]['nome']
+
+    #chama a função getLunchDinner do módulo cardapiogetter passando a url do cardápio do campus como parâmetro e designa
+    #a variável 'lunch' ao primeiro item da lista que a função retorna e a variável 'dinner' ao segundo item
+    lunchAndDinner = cg.getCardapio(campus[keyCampus]["url"])
+    lunchArray = lunchAndDinner[0]
+    dinnerArray = lunchAndDinner[1]
+
+    string_lunch = getLunchSpecific(lunchArray, campusName)
+    string_dinner = getDinnerSpecific(dinnerArray, campusName)
+
+
+    return [string_lunch, string_dinner]
+
+
+
 #função para pegar o almoço de um campus específico
-def getLunchSpecific(keyCampus):
+def getLunchSpecific(lunch, campusNome):
 
     #compõe o início da string de almoço, parte do texto que será postado como tweet. Inclue o nome do campus, valor encontrado
     #como um dos valores da keyCampus no dicionário campus.
-    tweet_string_lunch = f"{diaDaSemanaText} Almoço em "+ campus[keyCampus]['nome'] + ":\n"
-
-    #chama a função getLunchDinner do módulo cardapiogetter passando a url do cardápio do campus como parâmetro e designa
-    #a variável 'lunch' ao primeiro item da lista que a função retorna, já que ela retorna almoço e jantar juntos.
-    lunchAndDinner = cg.getCardapio(campus[keyCampus]["url"])
-    lunch = lunchAndDinner[0]
+    tweet_string_lunch = f"({diaDaSemanaText}) Almoço em "+ campusNome + ":\n"
 
     #designa o almoço do dia, procurando os resultados da coluna 'ALMOÇO' (que possui informação de tipo de prato) e da coluna
     #do dia da semana correspondente, que possui o nome do prato a ser servido. Adiciona os resultados a uma lista.
@@ -80,6 +98,7 @@ def getLunchSpecific(keyCampus):
     for plate in dayLunchPlates:
         tweet_string_lunch += wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
 
+    #confere se a string final é maior que 220 caracteres. Se for, tenta abreviar o nome do dia da semana para apenas três letras
     if len(tweet_string_lunch)>=220:
         print("String too big. Reajusting...")
         oldName = re.search(r'\(([^)]+)', tweet_string_lunch).group(1)
@@ -91,16 +110,11 @@ def getLunchSpecific(keyCampus):
 
 
 #função para pegar o jantar de um campus específico
-def getDinnerSpecific(keyCampus):
+def getDinnerSpecific(dinner, campusNome):
 
     #compõe o início da string de jantar, parte do texto que será postado como tweet. Inclue o nome do campus, valor encontrado
     #como um dos valores da keyCampus no dicionário campus.
-    tweet_string_dinner = f"({diaDaSemanaText}) Jantar em "+ campus[keyCampus]['nome'] + ":\n"
-
-    #chama a função getLunchDinner do módulo cardapiogetter passando a url do cardápio do campus como parâmetro e designa
-    #a variável 'dinner' ao segundo item da lista que a função retorna, já que ela retorna almoço e jantar juntos.
-    lunchAndDinner = cg.getCardapio(campus[keyCampus]["url"])
-    dinner = lunchAndDinner[1]
+    tweet_string_dinner = f"({diaDaSemanaText}) Jantar em "+ campusNome + ":\n"
 
     #designa o jantar do dia, procurando os resultados da coluna 'ALMOÇO' (que possui informação de tipo de prato) e da coluna
     #do dia da semana correspondente, que possui o nome do prato a ser servido. Adiciona os resultados a uma lista.
@@ -113,6 +127,7 @@ def getDinnerSpecific(keyCampus):
     for plate in dayDinnerPlates:
         tweet_string_dinner +=  wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
 
+    #confere se a string final é maior que 220 caracteres. Se for, tenta abreviar o nome do dia da semana para apenas três letras
     if len(tweet_string_dinner)>=220:
         print("String too big. Reajusting...")
         oldName = re.search(r'\(([^)]+)', tweet_string_dinner).group(1)
@@ -123,12 +138,8 @@ def getDinnerSpecific(keyCampus):
     return tweet_string_dinner
 
 
-
-
-#strings para guardar o resultado de almoço e jantar dos dois campus
-strings_lunch = [getLunchSpecific("IFCSPV"), getLunchSpecific("fundao")]
-strings_dinner = [getDinnerSpecific("IFCSPV"), getDinnerSpecific("fundao")]
-
+strings_ifcspv = getCardapioCampus("IFCSPV")
+strings_fundao = getCardapioCampus("fundao")
 
 #tuitar de acordo com a hora do dia
 # if dt.datetime.now().hour < 12:
@@ -138,8 +149,14 @@ strings_dinner = [getDinnerSpecific("IFCSPV"), getDinnerSpecific("fundao")]
 #     api.update_status(strings_dinner[0])
 #     api.update_status(strings_dinner[1])
 
+
+# print(strings_ifcspv[0])
+# print(strings_ifcspv[1])
+# print(strings_fundao[0])
+# print(strings_fundao[1])
+
 #tuitar na mesma hora
-api.update_status(strings_lunch[0])
-api.update_status(strings_lunch[1])
-api.update_status(strings_dinner[0])
-api.update_status(strings_dinner[1])
+api.update_status(strings_ifcspv[0])
+api.update_status(strings_ifcspv[1])
+api.update_status(strings_fundao[0])
+api.update_status(strings_fundao[1])
