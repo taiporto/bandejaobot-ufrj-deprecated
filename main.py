@@ -1,8 +1,10 @@
-﻿import tweepy
+import tweepy
 import re
+import csv
 import authenticationkeys as ak
 import cardapiogetter as cg
 import datetime as dt
+
 
 # Authenticate to Twitter
 auth = tweepy.OAuthHandler(ak.CONSUMER_KEY, ak.CONSUMER_SECRET)
@@ -22,16 +24,17 @@ diasSemana ={
     "Friday": "Sexta-Feira"
 }
 
-
 #dicionário para lidar com as variáveis de campus
 campus = {
     "IFCSPV":{
         "url": "https://docs.google.com/spreadsheets/d/1gymUpZ2m-AbDgH7Ee7uftbqWmKBVYxoToj28E8c-Dzc/pubhtml",
-        "nome": "IFCS/PV"
+        "nome": "IFCS/PV",
+        "nomeArq": "IFCS-PV"
     },
     "fundao": {
         "url": "https://docs.google.com/spreadsheets/d/1YvCqBrNw5l4EFNplmpRBFrFJpjl4EALlVNDk3pwp_dQ/pubhtml",
-        "nome": "Fundão"
+        "nome": "Fundão",
+        "nomeArq": "Fundao"
     }
 }
 
@@ -53,6 +56,10 @@ wordToEmoji = {
 weekDay = dt.datetime.now().strftime("%A")
 diaDaSemana = diasSemana[weekDay]
 
+#pegar o mês atual
+month = dt.datetime.now().strftime("%m")
+completeDay = dt.datetime.now().strftime("%d-%m-%Y")
+
 #abreviar o dia da semana caso seja "___-feira"
 if diaDaSemana != "Sábado" and diaDaSemana != "Domingo":
     diaDaSemanaText = diaDaSemana[:-6]
@@ -61,10 +68,9 @@ else:
 
 #função para pegar e transformar em string de tweet o cardapio completo de almoço e jantar de um campus específico
 def getCardapioCampus(keyCampus):
-
-    print("entrou")
-
+    
     campusName = campus[keyCampus]['nome']
+    campusArqName = campus[keyCampus]['nomeArq']
 
     #chama a função getLunchDinner do módulo cardapiogetter passando a url do cardápio do campus como parâmetro e designa
     #a variável 'lunch' ao primeiro item da lista que a função retorna e a variável 'dinner' ao segundo item
@@ -72,13 +78,31 @@ def getCardapioCampus(keyCampus):
     lunchArray = lunchAndDinner[0]
     dinnerArray = lunchAndDinner[1]
 
+    #chama as funções getLunchSpecific e getDinnerSpecific, que pegam os dataframes lunchArray e dinnerArray e o nome
+    #campus para gerar o tweet que será postado.
     string_lunch = getLunchSpecific(lunchArray, campusName)
     string_dinner = getDinnerSpecific(dinnerArray, campusName)
 
+    #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
+    if diaDaSemana == "Segunda-Feira":
+
+        with open(f"/path/to/csv/cardapiomes{month}-{campusArqName}.csv", 'a') as cardapiomes:
+            cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno"])
+
+            for index, row in lunchArray.iterrows():
+                tipoPrato = row['ALMOÇO']
+                for column in lunchArray:
+                    if column != 'ALMOÇO':
+                        cardapio_writer.writerow([row[column], tipoPrato, column, completeDay, "Almoço"])
+
+            for index, row in dinnerArray.iterrows():
+                tipoPrato = row['JANTAR']
+                for column in dinnerArray:
+                    if column != 'JANTAR':
+                        cardapio_writer.writerow([row[column], tipoPrato, column, completeDay, "Jantar"])
 
     return [string_lunch, string_dinner]
-
-
 
 #função para pegar o almoço de um campus específico
 def getLunchSpecific(lunch, campusNome):
@@ -105,9 +129,9 @@ def getLunchSpecific(lunch, campusNome):
         newName = oldName[:3]
         tweet_string_lunch = tweet_string_lunch.replace(oldName, newName)
 
+
     #retorna a string já composta pelo cardápio do almoço
     return tweet_string_lunch
-
 
 #função para pegar o jantar de um campus específico
 def getDinnerSpecific(dinner, campusNome):
@@ -137,26 +161,27 @@ def getDinnerSpecific(dinner, campusNome):
     #retorna a string já composta pelo cardápio do jantar
     return tweet_string_dinner
 
-
 strings_ifcspv = getCardapioCampus("IFCSPV")
 strings_fundao = getCardapioCampus("fundao")
 
-#tuitar de acordo com a hora do dia
-# if dt.datetime.now().hour < 12:
-#      api.update_status(strings_lunch[0])
-#      api.update_status(strings_lunch[1])
-# else:
-#     api.update_status(strings_dinner[0])
-#     api.update_status(strings_dinner[1])
+#função que divide o tweet em dois, com as duas últimas linhas em um segundo tweet
+def splitTweet(tweet):
+    tweet1 = "\n".join(tweet.split("\n")[0:-3])
+    tweet2 = tweet.split("\n",6)[6]
+    return [tweet1, tweet2]
 
+#função que posta os tweets. Ela confere se cada tweet da array possui menos de 220 caracteres.
+#Se o tweet ultrapassar os 220 caracteres a função chama a função splitTweet
+#e posta os tweets divididos, com o segundo como resposta do primeiro.
+def postTweets(stringArray):
+    for string in stringArray:
+        if len(string) >= 220:
+            newTweets = splitTweet(string)
+            firstTweet = api.update_status(newTweets[0])
+            api.update_status('@bandejaobotufrj'+newTweets[1], firstTweet.id_str)
+        else:
+            api.update_status(string)
 
-# print(strings_ifcspv[0])
-# print(strings_ifcspv[1])
-# print(strings_fundao[0])
-# print(strings_fundao[1])
-
-#tuitar na mesma hora
-api.update_status(strings_ifcspv[0])
-api.update_status(strings_ifcspv[1])
-api.update_status(strings_fundao[0])
-api.update_status(strings_fundao[1])
+#chama a função postTweets para as arrays de tweets dos dois campus
+postTweets(strings_ifcspv)
+postTweets(strings_fundao)
