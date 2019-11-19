@@ -38,7 +38,6 @@ campus = {
     }
 }
 
-
 #dicionário para substituir a descrição dos pratos por emojis
 wordToEmoji = {
     "Entrada": "🥗",
