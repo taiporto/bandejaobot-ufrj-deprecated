@@ -4,6 +4,8 @@ import csv
 import authenticationkeys as ak
 import cardapiogetter as cg
 import datetime as dt
+import os.path
+from os import path
 
 
 # Authenticate to Twitter
@@ -38,11 +40,13 @@ campus = {
     }
 }
 
+
 #dicionário para substituir a descrição dos pratos por emojis
 wordToEmoji = {
     "Entrada": "🥗",
     "Prato Principal": "🍲",
     "Prato Vegetariano": "🥦",
+    "Prato Vegano": "🥦",
     "Guarnição": "🥘",
     "Acompanhamentos": "🍛",
     "Acompanhamento": "🍛",
@@ -57,7 +61,7 @@ diaDaSemana = diasSemana[weekDay]
 
 #pegar o mês atual
 month = dt.datetime.now().strftime("%m")
-completeDay = dt.datetime.now().strftime("%d-%m-%Y")
+completeDay = dt.datetime.now()
 
 #abreviar o dia da semana caso seja "___-feira"
 if diaDaSemana != "Sábado" and diaDaSemana != "Domingo":
@@ -67,7 +71,9 @@ else:
 
 #função para pegar e transformar em string de tweet o cardapio completo de almoço e jantar de um campus específico
 def getCardapioCampus(keyCampus):
-    
+
+    print("entrou")
+
     campusName = campus[keyCampus]['nome']
     campusArqName = campus[keyCampus]['nomeArq']
 
@@ -77,31 +83,48 @@ def getCardapioCampus(keyCampus):
     lunchArray = lunchAndDinner[0]
     dinnerArray = lunchAndDinner[1]
 
-    #chama as funções getLunchSpecific e getDinnerSpecific, que pegam os dataframes lunchArray e dinnerArray e o nome
+    #chama as funções getLunchSpecific e getDinnerSpecific, que pegam os dataframes lunchArray e dinnerArray e o nome do
     #campus para gerar o tweet que será postado.
     string_lunch = getLunchSpecific(lunchArray, campusName)
     string_dinner = getDinnerSpecific(dinnerArray, campusName)
 
+
     #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
     if diaDaSemana == "Segunda-Feira":
 
-        with open(f"/path/to/csv/cardapiomes{month}-{campusArqName}.csv", 'a') as cardapiomes:
+        if not path.exists(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}-{campusArqName}.csv"):
+
+            cardapiomes = open(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}-{campusArqName}.csv", 'a')
+            cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
+
+        with open(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}-{campusArqName}.csv", 'a') as cardapiomes:
+
             cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-            cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno"])
 
             for index, row in lunchArray.iterrows():
+                i = 0
                 tipoPrato = row['ALMOÇO']
                 for column in lunchArray:
                     if column != 'ALMOÇO':
-                        cardapio_writer.writerow([row[column], tipoPrato, column, completeDay, "Almoço"])
+                        columnCompleteDate = completeDay+dt.timedelta(days=i)
+                        columnDate = columnCompleteDate.strftime("%d-%m-%Y")
+                        cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Almoço", campusArqName])
+                        i+=1
 
             for index, row in dinnerArray.iterrows():
+                j = 0
                 tipoPrato = row['JANTAR']
                 for column in dinnerArray:
                     if column != 'JANTAR':
-                        cardapio_writer.writerow([row[column], tipoPrato, column, completeDay, "Jantar"])
+                        columnCompleteDate = completeDay+dt.timedelta(days=j)
+                        columnDate = columnCompleteDate.strftime("%d-%m-%Y")
+                        cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Jantar", campusArqName])
+                        j+=1
 
     return [string_lunch, string_dinner]
+
+
 
 #função para pegar o almoço de um campus específico
 def getLunchSpecific(lunch, campusNome):
@@ -128,9 +151,12 @@ def getLunchSpecific(lunch, campusNome):
         newName = oldName[:3]
         tweet_string_lunch = tweet_string_lunch.replace(oldName, newName)
 
+    #confere se a string tem algum espaço extra. Se tiver, normaliza para apenas um espaço
+    tweet_string_lunch = re.sub(r'([ ]{2,})', ' ', tweet_string_lunch)
 
     #retorna a string já composta pelo cardápio do almoço
     return tweet_string_lunch
+
 
 #função para pegar o jantar de um campus específico
 def getDinnerSpecific(dinner, campusNome):
@@ -156,6 +182,10 @@ def getDinnerSpecific(dinner, campusNome):
         oldName = re.search(r'\(([^)]+)', tweet_string_dinner).group(1)
         newName = oldName[:3]
         tweet_string_dinner = tweet_string_dinner.replace(oldName, newName)
+        print(tweet_string_dinner)
+
+    #confere se a string tem algum espaço extra. Se tiver, normaliza para apenas um espaço
+    tweet_string_dinner = re.sub(r'([ ]{2,})', ' ', tweet_string_dinner)
 
     #retorna a string já composta pelo cardápio do jantar
     return tweet_string_dinner
@@ -167,19 +197,23 @@ strings_fundao = getCardapioCampus("fundao")
 def splitTweet(tweet):
     tweet1 = "\n".join(tweet.split("\n")[0:-3])
     tweet2 = tweet.split("\n",6)[6]
+    print(tweet1)
+    print(tweet2)
     return [tweet1, tweet2]
 
 #função que posta os tweets. Ela confere se cada tweet da array possui menos de 220 caracteres.
 #Se o tweet ultrapassar os 220 caracteres a função chama a função splitTweet
-#e posta os tweets divididos, com o segundo como resposta do primeiro.
+# e posta os tweets divididos com o segundo como resposta do primeiro.
 def postTweets(stringArray):
     for string in stringArray:
         if len(string) >= 220:
             newTweets = splitTweet(string)
+            print(newTweets)
             firstTweet = api.update_status(newTweets[0])
             api.update_status('@bandejaobotufrj'+newTweets[1], firstTweet.id_str)
         else:
             api.update_status(string)
+
 
 #chama a função postTweets para as arrays de tweets dos dois campus
 postTweets(strings_ifcspv)
