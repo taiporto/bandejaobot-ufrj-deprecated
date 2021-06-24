@@ -63,6 +63,9 @@ diaDaSemana = diasSemana[weekDay]
 month = dt.datetime.now().strftime("%m")
 completeDay = dt.datetime.now()
 
+#pegar o ano
+year = dt.datetime.now().strftime("%Y")
+
 #abreviar o dia da semana caso seja "___-feira"
 if diaDaSemana != "Sábado" and diaDaSemana != "Domingo":
     diaDaSemanaText = diaDaSemana[:-6]
@@ -92,13 +95,13 @@ def getCardapioCampus(keyCampus):
     #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
     if diaDaSemana == "Segunda-Feira":
 
-        if not path.exists(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}-{campusArqName}.csv"):
+        if not path.exists(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}-{year}-{campusArqName}.csv"):
 
-            cardapiomes = open(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}-{campusArqName}.csv", 'a')
+            cardapiomes = open(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}--{year}-{campusArqName}.csv", 'a')
             cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
 
-        with open(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}-{campusArqName}.csv", 'a') as cardapiomes:
+        with open(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}--{year}-{campusArqName}.csv", 'a') as cardapiomes:
 
             cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
