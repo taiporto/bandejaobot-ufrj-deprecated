@@ -221,6 +221,8 @@ def postTweets(stringArray):
             api.update_status(string)
 
 
-#chama a função postTweets para as arrays de tweets dos dois campus
-postTweets(strings_ifcspv)
-postTweets(strings_fundao)
+def cronjob():
+    api.update_status("teste chk")
+    #chama a função postTweets para as arrays de tweets dos dois campus
+    # postTweets(strings_ifcspv)
+    # postTweets(strings_fundao)
