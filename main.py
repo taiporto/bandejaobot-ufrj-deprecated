@@ -1,14 +1,19 @@
+import os
+from os import path
+from dotenv import load_dotenv
+
 import tweepy
 import re
 import csv
-import authenticationkeys as ak
-import cardapiogetter as cg
 import datetime as dt
 
+import cardapiogetter as cg
+
+load_dotenv()
 
 # Authenticate to Twitter
-auth = tweepy.OAuthHandler(ak.CONSUMER_KEY, ak.CONSUMER_SECRET)
-auth.set_access_token(ak.TOKEN, ak.TOKEN_SECRET)
+auth = tweepy.OAuthHandler(os.environ['CONSUMER_KEY'], os.environ['CONSUMER_SECRET'])
+auth.set_access_token(os.environ['TOKEN'], os.environ['TOKEN_SECRET'])
 
 # Create API object
 api = tweepy.API(auth)
@@ -87,13 +92,11 @@ def getCardapioCampus(keyCampus):
 
     #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
     if diaDaSemana == "Segunda-Feira":
-        if not path.exists(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}-{year}-{campusArqName}.csv"):
-
-            cardapiomes = open(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}--{year}-{campusArqName}.csv", 'a')
+        if not path.exists(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv"):
+            cardapiomes = open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'w')
             cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
-
-        with open(f"/home/bandejaobotufrj/bandejaoproject/csvs/cardapiomes{month}--{year}-{campusArqName}.csv", 'a') as cardapiomes:
+        with open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'a') as cardapiomes:
             cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno"])
 
