@@ -78,8 +78,6 @@ else:
 #função para pegar e transformar em string de tweet o cardapio completo de almoço e jantar de um campus específico
 def getCardapioCampus(keyCampus):
 
-    print("entrou")
-
     campusName = campus[keyCampus]['nome']
     campusArqName = campus[keyCampus]['nomeArq']
 
@@ -97,14 +95,14 @@ def getCardapioCampus(keyCampus):
 
     #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
     if diaDaSemana == "Segunda-Feira":
-
+        
         if not path.exists(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv"):
 
-            cardapiomes = open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'w')
+            cardapiomes = open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'w', encoding='utf-8')
             cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
 
-        with open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'a') as cardapiomes:
+        with open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'a', encoding='utf-8') as cardapiomes:
 
             cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
@@ -129,8 +127,6 @@ def getCardapioCampus(keyCampus):
                         j+=1
 
     return [string_lunch, string_dinner]
-
-
 
 #função para pegar o almoço de um campus específico
 def getLunchSpecific(lunch, campusNome):
