@@ -1,0 +1,99 @@
+nome_prato;tipo_prato;dia_semana;dia_mes;turno;campus
+Batata palha,Entrada,Segunda-Feira,20-07-2021,Almoço,Fundao
+Beterraba refogada,Entrada,Terça-Feira,21-07-2021,Almoço,Fundao
+Repolho roxo com gengibre,Entrada,Quarta-Feira,22-07-2021,Almoço,Fundao
+Aipim sautée,Entrada,Quinta-Feira,23-07-2021,Almoço,Fundao
+Couve-flor com ervas,Entrada,Sexta-Feira,24-07-2021,Almoço,Fundao
+Chuchu ao vapor,Entrada,Sábado,25-07-2021,Almoço,Fundao
+Cenoura com gengibre,Entrada,Domingo,26-07-2021,Almoço,Fundao
+Estrogonofe de carne,Prato Principal,Segunda-Feira,20-07-2021,Almoço,Fundao
+Goulash misto,Prato Principal,Terça-Feira,21-07-2021,Almoço,Fundao
+Filé mignon suíno ao molho de limão,Prato Principal,Quarta-Feira,22-07-2021,Almoço,Fundao
+Frango à pizzaiolo,Prato Principal,Quinta-Feira,23-07-2021,Almoço,Fundao
+Carne ao molho de tomate rústico,Prato Principal,Sexta-Feira,24-07-2021,Almoço,Fundao
+Carne ao molho madeira,Prato Principal,Sábado,25-07-2021,Almoço,Fundao
+Peixe a dorê,Prato Principal,Domingo,26-07-2021,Almoço,Fundao
+"Estrogonofe de berinjela, abobrinha e ervilha",Prato Vegano,Segunda-Feira,20-07-2021,Almoço,Fundao
+Proteína de soja moída com azeitonas,Prato Vegano,Terça-Feira,21-07-2021,Almoço,Fundao
+Curry vegetariano,Prato Vegano,Quarta-Feira,22-07-2021,Almoço,Fundao
+Cachupa,Prato Vegano,Quinta-Feira,23-07-2021,Almoço,Fundao
+Panqueca de soja e cenoura,Prato Vegano,Sexta-Feira,24-07-2021,Almoço,Fundao
+Moqueca de banana da terra,Prato Vegano,Sábado,25-07-2021,Almoço,Fundao
+Quiche de cebola caramelizada e orégano,Prato Vegano,Domingo,26-07-2021,Almoço,Fundao
+Cenoura com cebolinha,Guarnição,Segunda-Feira,20-07-2021,Almoço,Fundao
+Espaguete ao alho e óleo,Guarnição,Terça-Feira,21-07-2021,Almoço,Fundao
+Farofa de alho poró,Guarnição,Quarta-Feira,22-07-2021,Almoço,Fundao
+Cenoura com ervilha,Guarnição,Quinta-Feira,23-07-2021,Almoço,Fundao
+Quibebe,Guarnição,Sexta-Feira,24-07-2021,Almoço,Fundao
+Batata rústica com páprica,Guarnição,Sábado,25-07-2021,Almoço,Fundao
+Creme de espinafre,Guarnição,Domingo,26-07-2021,Almoço,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Segunda-Feira,20-07-2021,Almoço,Fundao
+Arroz brancoFeijão vermelho,Acompanhamento,Terça-Feira,21-07-2021,Almoço,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Quarta-Feira,22-07-2021,Almoço,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Quinta-Feira,23-07-2021,Almoço,Fundao
+Arroz brancoLentilha,Acompanhamento,Sexta-Feira,24-07-2021,Almoço,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Sábado,25-07-2021,Almoço,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Domingo,26-07-2021,Almoço,Fundao
+Maçã,Sobremesa ,Segunda-Feira,20-07-2021,Almoço,Fundao
+Pera,Sobremesa ,Terça-Feira,21-07-2021,Almoço,Fundao
+Banana,Sobremesa ,Quarta-Feira,22-07-2021,Almoço,Fundao
+Laranja,Sobremesa ,Quinta-Feira,23-07-2021,Almoço,Fundao
+Goiabada,Sobremesa ,Sexta-Feira,24-07-2021,Almoço,Fundao
+Maçã,Sobremesa ,Sábado,25-07-2021,Almoço,Fundao
+Laranja,Sobremesa ,Domingo,26-07-2021,Almoço,Fundao
+----,Refresco,Segunda-Feira,20-07-2021,Almoço,Fundao
+----,Refresco,Terça-Feira,21-07-2021,Almoço,Fundao
+----,Refresco,Quarta-Feira,22-07-2021,Almoço,Fundao
+----,Refresco,Quinta-Feira,23-07-2021,Almoço,Fundao
+----,Refresco,Sexta-Feira,24-07-2021,Almoço,Fundao
+----,Refresco,Sábado,25-07-2021,Almoço,Fundao
+----,Refresco,Domingo,26-07-2021,Almoço,Fundao
+Chicoria refogada,Entrada,Segunda-Feira,20-07-2021,Jantar,Fundao
+Acelga refogada,Entrada,Terça-Feira,21-07-2021,Jantar,Fundao
+Abóbora com manjericão,Entrada,Quarta-Feira,22-07-2021,Jantar,Fundao
+Beterraba assada com tomilho,Entrada,Quinta-Feira,23-07-2021,Jantar,Fundao
+Quiabo ao alho,Entrada,Sexta-Feira,24-07-2021,Jantar,Fundao
+Acelga refogada,Entrada,Sábado,25-07-2021,Jantar,Fundao
+Vagem com salsa,Entrada,Domingo,26-07-2021,Jantar,Fundao
+Lombinho xadrez,Prato Principal,Segunda-Feira,20-07-2021,Jantar,Fundao
+Fricassê de frango,Prato Principal,Terça-Feira,21-07-2021,Jantar,Fundao
+Frango ao molho de mel e mostarda,Prato Principal,Quarta-Feira,22-07-2021,Jantar,Fundao
+Picadinho de carne,Prato Principal,Quinta-Feira,23-07-2021,Jantar,Fundao
+Frango assado,Prato Principal,Sexta-Feira,24-07-2021,Jantar,Fundao
+Churrasquinho misto,Prato Principal,Sábado,25-07-2021,Jantar,Fundao
+Carne assada ao molho ferrugem,Prato Principal,Domingo,26-07-2021,Jantar,Fundao
+Falafel,Prato Vegano,Segunda-Feira,20-07-2021,Jantar,Fundao
+Hambúrguer de berinjela,Prato Vegano,Terça-Feira,21-07-2021,Jantar,Fundao
+Escondidinho de aipim com vegetais,Prato Vegano,Quarta-Feira,22-07-2021,Jantar,Fundao
+Quiche de espinafre,Prato Vegano,Quinta-Feira,23-07-2021,Jantar,Fundao
+Pimentão vermelho recheado com proteína soja moída,Prato Vegano,Sexta-Feira,24-07-2021,Jantar,Fundao
+Torta de feijão branco com inhame e cenoura,Prato Vegano,Sábado,25-07-2021,Jantar,Fundao
+Quibe de berinjela assado,Prato Vegano,Domingo,26-07-2021,Jantar,Fundao
+Abóbora com alecrim,Guarnição,Segunda-Feira,20-07-2021,Jantar,Fundao
+Panachê de legumes,Guarnição,Terça-Feira,21-07-2021,Jantar,Fundao
+Couve-flor refogada,Guarnição,Quarta-Feira,22-07-2021,Jantar,Fundao
+Purê de batata,Guarnição,Quinta-Feira,23-07-2021,Jantar,Fundao
+Polenta,Guarnição,Sexta-Feira,24-07-2021,Jantar,Fundao
+Ervilha torta e cenoura,Guarnição,Sábado,25-07-2021,Jantar,Fundao
+Abóbora com coentro,Guarnição,Domingo,26-07-2021,Jantar,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Segunda-Feira,20-07-2021,Jantar,Fundao
+Arroz brancoFeijão vermelho,Acompanhamento,Terça-Feira,21-07-2021,Jantar,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Quarta-Feira,22-07-2021,Jantar,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Quinta-Feira,23-07-2021,Jantar,Fundao
+Arroz brancoLentilha,Acompanhamento,Sexta-Feira,24-07-2021,Jantar,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Sábado,25-07-2021,Jantar,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Domingo,26-07-2021,Jantar,Fundao
+Doce de leite,Sobremesa ,Segunda-Feira,20-07-2021,Jantar,Fundao
+Tangerina,Sobremesa ,Terça-Feira,21-07-2021,Jantar,Fundao
+Laranja,Sobremesa ,Quarta-Feira,22-07-2021,Jantar,Fundao
+Banana,Sobremesa ,Quinta-Feira,23-07-2021,Jantar,Fundao
+Maçã,Sobremesa ,Sexta-Feira,24-07-2021,Jantar,Fundao
+Pera,Sobremesa ,Sábado,25-07-2021,Jantar,Fundao
+Banana,Sobremesa ,Domingo,26-07-2021,Jantar,Fundao
+....,Refresco,Segunda-Feira,20-07-2021,Jantar,Fundao
+----,Refresco,Terça-Feira,21-07-2021,Jantar,Fundao
+----,Refresco,Quarta-Feira,22-07-2021,Jantar,Fundao
+----,Refresco,Quinta-Feira,23-07-2021,Jantar,Fundao
+----,Refresco,Sexta-Feira,24-07-2021,Jantar,Fundao
+----,Refresco,Sábado,25-07-2021,Jantar,Fundao
+----,Refresco,Domingo,26-07-2021,Jantar,Fundao
