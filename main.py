@@ -6,10 +6,14 @@ import tweepy
 import re
 import csv
 import datetime as dt
+from pytz import timezone
 
 import cardapiogetter as cg
 
 load_dotenv()
+
+# Configurar fuso horário
+tz = timezone('America/Sao_Paulo')
 
 # Authenticate to Twitter
 auth = tweepy.OAuthHandler(os.environ['CONSUMER_KEY'], os.environ['CONSUMER_SECRET'])
@@ -56,16 +60,24 @@ wordToEmoji = {
     "Refresco": "🥤"
 }
 
+# pegar data atual
+date = dt.datetime.now(tz=tz)
+
 #pegar o dia da semana atual e traduzi-lo
-weekDay = dt.datetime.now().strftime("%A")
+weekDay = date.strftime("%A")
 diaDaSemana = diasSemana[weekDay]
 
 #pegar o mês atual
+<<<<<<< HEAD
 month = dt.datetime.now().strftime("%m")
 completeDay = dt.datetime.now().strftime("%d-%m-%Y")
+=======
+month = date.strftime("%m")
+completeDay = date
+>>>>>>> 74dc45d... Add timezone configuration to cronjob and main
 
 #pegar o ano
-year = dt.datetime.now().strftime("%Y")
+year = date.strftime("%Y")
 
 #abreviar o dia da semana caso seja "___-feira"
 if diaDaSemana != "Sábado" and diaDaSemana != "Domingo":
@@ -168,7 +180,8 @@ def getDinnerSpecific(dinner, campusNome):
         oldName = re.search(r'\(([^)]+)', tweet_string_dinner).group(1)
         newName = oldName[:3]
         tweet_string_dinner = tweet_string_dinner.replace(oldName, newName)
-
+    #confere se a string tem algum espaço extra. Se tiver, normaliza para apenas um espaço
+    tweet_string_dinner = re.sub(r'([ ]{2,})', ' ', tweet_string_dinner)
     #retorna a string já composta pelo cardápio do jantar
     return tweet_string_dinner
 
