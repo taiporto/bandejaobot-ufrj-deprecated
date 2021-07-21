@@ -6,10 +6,14 @@ import tweepy
 import re
 import csv
 import datetime as dt
+from pytz import timezone
 
 import cardapiogetter as cg
 
 load_dotenv()
+
+# Configurar fuso horário
+tz = timezone('America/Sao_Paulo')
 
 # Authenticate to Twitter
 auth = tweepy.OAuthHandler(os.environ['CONSUMER_KEY'], os.environ['CONSUMER_SECRET'])
@@ -43,7 +47,6 @@ campus = {
     }
 }
 
-
 #dicionário para substituir a descrição dos pratos por emojis
 wordToEmoji = {
     "Entrada": "🥗",
@@ -58,16 +61,19 @@ wordToEmoji = {
     "Refresco": "🥤"
 }
 
+# pegar data atual
+date = dt.datetime.now(tz=tz)
+
 #pegar o dia da semana atual e traduzi-lo
-weekDay = dt.datetime.now().strftime("%A")
+weekDay = date.strftime("%A")
 diaDaSemana = diasSemana[weekDay]
 
 #pegar o mês atual
-month = dt.datetime.now().strftime("%m")
-completeDay = dt.datetime.now()
+month = date.strftime("%m")
+completeDay = date
 
 #pegar o ano
-year = dt.datetime.now().strftime("%Y")
+year = date.strftime("%Y")
 
 #abreviar o dia da semana caso seja "___-feira"
 if diaDaSemana != "Sábado" and diaDaSemana != "Domingo":
@@ -184,7 +190,6 @@ def getDinnerSpecific(dinner, campusNome):
         oldName = re.search(r'\(([^)]+)', tweet_string_dinner).group(1)
         newName = oldName[:3]
         tweet_string_dinner = tweet_string_dinner.replace(oldName, newName)
-        print(tweet_string_dinner)
 
     #confere se a string tem algum espaço extra. Se tiver, normaliza para apenas um espaço
     tweet_string_dinner = re.sub(r'([ ]{2,})', ' ', tweet_string_dinner)
@@ -199,8 +204,6 @@ strings_fundao = getCardapioCampus("fundao")
 def splitTweet(tweet):
     tweet1 = "\n".join(tweet.split("\n")[0:-3])
     tweet2 = tweet.split("\n",6)[6]
-    print(tweet1)
-    print(tweet2)
     return [tweet1, tweet2]
 
 #função que posta os tweets. Ela confere se cada tweet da array possui menos de 220 caracteres.
@@ -210,7 +213,6 @@ def postTweets(stringArray):
     for string in stringArray:
         if len(string) >= 220:
             newTweets = splitTweet(string)
-            print(newTweets)
             firstTweet = api.update_status(newTweets[0])
             api.update_status('@bandejaobotufrj'+newTweets[1], firstTweet.id_str)
         else:
