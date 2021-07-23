@@ -63,10 +63,12 @@ wordToEmoji = {
 
 # pegar data atual
 date = dt.datetime.now(tz=tz)
+print(date)
 
 #pegar o dia da semana atual e traduzi-lo
 weekDay = date.strftime("%A")
 diaDaSemana = diasSemana[weekDay]
+print(weekDay, diaDaSemana)
 
 #pegar o mês atual
 month = date.strftime("%m")
@@ -220,6 +222,7 @@ def postTweets(stringArray):
 
 
 def cronjob():
+    print("running cronjob")
     #chama a função postTweets para as arrays de tweets dos dois campus
     postTweets(strings_ifcspv)
     postTweets(strings_fundao)
