@@ -62,19 +62,16 @@ wordToEmoji = {
 
 # pegar data atual
 date = dt.datetime.now(tz=tz)
+print(date)
 
 #pegar o dia da semana atual e traduzi-lo
 weekDay = date.strftime("%A")
 diaDaSemana = diasSemana[weekDay]
+print(weekDay, diaDaSemana)
 
 #pegar o mês atual
-<<<<<<< HEAD
-month = dt.datetime.now().strftime("%m")
-completeDay = dt.datetime.now().strftime("%d-%m-%Y")
-=======
 month = date.strftime("%m")
 completeDay = date
->>>>>>> 74dc45d... Add timezone configuration to cronjob and main
 
 #pegar o ano
 year = date.strftime("%Y")
@@ -206,6 +203,15 @@ def postTweets(stringArray):
         else:
             api.update_status(string)
 
+<<<<<<< HEAD
 #chama a função postTweets para as arrays de tweets dos dois campus
 postTweets(strings_ifcspv)
 postTweets(strings_fundao)
+=======
+
+def cronjob():
+    print("running cronjob")
+    #chama a função postTweets para as arrays de tweets dos dois campus
+    postTweets(strings_ifcspv)
+    postTweets(strings_fundao)
+>>>>>>> 83bc843... test fix
