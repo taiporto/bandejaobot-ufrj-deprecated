@@ -203,15 +203,6 @@ def postTweets(stringArray):
         else:
             api.update_status(string)
 
-<<<<<<< HEAD
 #chama a função postTweets para as arrays de tweets dos dois campus
 postTweets(strings_ifcspv)
 postTweets(strings_fundao)
-=======
-
-def cronjob():
-    print("running cronjob")
-    #chama a função postTweets para as arrays de tweets dos dois campus
-    postTweets(strings_ifcspv)
-    postTweets(strings_fundao)
->>>>>>> 83bc843... test fix
