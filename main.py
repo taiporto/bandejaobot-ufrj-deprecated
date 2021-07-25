@@ -226,3 +226,5 @@ def cronjob():
     #chama a função postTweets para as arrays de tweets dos dois campus
     postTweets(strings_ifcspv)
     postTweets(strings_fundao)
+
+cronjob()
