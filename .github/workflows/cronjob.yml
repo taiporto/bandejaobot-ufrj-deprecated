@@ -1,6 +1,8 @@
 name: Run main.py everyday
 on:
-  [push]
+  push:
+    branches:
+      - main
   schedule:
     - cron: "0 12 * * *" #Run everyday at 12PM UTC (9AM BRT)
 
