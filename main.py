@@ -54,6 +54,8 @@ wordToEmoji = {
     "Prato Vegetariano": "🥦",
     "Prato Vegano": "🥦",
     "Guarnição": "🥘",
+    "Guarnição 1": "🥘",
+    "Guarnição 2": "🥘",
     "Acompanhamentos": "🍛",
     "Acompanhamento": "🍛",
     "Sobremesa": "🍬",
@@ -83,61 +85,9 @@ if diaDaSemana != "Sábado" and diaDaSemana != "Domingo":
 else:
     diaDaSemanaText = diaDaSemana
 
-#função para pegar e transformar em string de tweet o cardapio completo de almoço e jantar de um campus específico
-def getCardapioCampus(keyCampus):
 
-    campusName = campus[keyCampus]['nome']
-    campusArqName = campus[keyCampus]['nomeArq']
-
-    #chama a função getLunchDinner do módulo cardapiogetter passando a url do cardápio do campus como parâmetro e designa
-    #a variável 'lunch' ao primeiro item da lista que a função retorna e a variável 'dinner' ao segundo item
-    lunchAndDinner = cg.getCardapio(campus[keyCampus]["url"])
-    lunchArray = lunchAndDinner[0]
-    dinnerArray = lunchAndDinner[1]
-
-    #chama as funções getLunchSpecific e getDinnerSpecific, que pegam os dataframes lunchArray e dinnerArray e o nome do
-    #campus para gerar o tweet que será postado.
-    string_lunch = getLunchSpecific(lunchArray, campusName)
-    string_dinner = getDinnerSpecific(dinnerArray, campusName)
-
-
-    #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
-    if diaDaSemana == "Segunda-Feira":
-        
-        if not path.exists(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv"):
-
-            cardapiomes = open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'w', encoding='utf-8')
-            cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-            cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
-
-        with open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'a', encoding='utf-8') as cardapiomes:
-
-            cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-
-            for index, row in lunchArray.iterrows():
-                i = 0
-                tipoPrato = row['ALMOÇO']
-                for column in lunchArray:
-                    if column != 'ALMOÇO':
-                        columnCompleteDate = completeDay+dt.timedelta(days=i)
-                        columnDate = columnCompleteDate.strftime("%d-%m-%Y")
-                        cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Almoço", campusArqName])
-                        i+=1
-
-            for index, row in dinnerArray.iterrows():
-                j = 0
-                tipoPrato = row['JANTAR']
-                for column in dinnerArray:
-                    if column != 'JANTAR':
-                        columnCompleteDate = completeDay+dt.timedelta(days=j)
-                        columnDate = columnCompleteDate.strftime("%d-%m-%Y")
-                        cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Jantar", campusArqName])
-                        j+=1
-
-    return [string_lunch, string_dinner]
-
-#função para pegar o almoço de um campus específico
-def getLunchSpecific(lunch, campusNome):
+# recebe o DataFrame com cardápio de almoço de um campus específico e devolve o(s) tweet(s) montados para postar
+def createLunchTweet(lunch, campusNome):
 
     #compõe o início da string de almoço, parte do texto que será postado como tweet. Inclue o nome do campus, valor encontrado
     #como um dos valores da keyCampus no dicionário campus.
@@ -152,7 +102,11 @@ def getLunchSpecific(lunch, campusNome):
     #as informações à string de almoço, com uma quebra de linha no final de cada prato. Muda o tipo de prato para um emoji,
     #para economizar caracteres.
     for plate in dayLunchPlates:
-        tweet_string_lunch += wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
+        try:
+            if(plate[0] != "Atenção o cardápio poderá sofrer alteração sem comunicação prévia"):
+                tweet_string_lunch += wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
+        except KeyError as e:
+            print("Erro na chave:", e)
 
     #confere se a string final é maior que 220 caracteres. Se for, tenta abreviar o nome do dia da semana para apenas três letras
     if len(tweet_string_lunch)>=220:
@@ -168,8 +122,8 @@ def getLunchSpecific(lunch, campusNome):
     return tweet_string_lunch
 
 
-#função para pegar o jantar de um campus específico
-def getDinnerSpecific(dinner, campusNome):
+# recebe o DataFrame com cardápio de jantar de um campus específico e devolve o(s) tweet(s) montados para postar
+def createDinnerTweet(dinner, campusNome):
 
     #compõe o início da string de jantar, parte do texto que será postado como tweet. Inclue o nome do campus, valor encontrado
     #como um dos valores da keyCampus no dicionário campus.
@@ -184,7 +138,11 @@ def getDinnerSpecific(dinner, campusNome):
     #e adiciona as informações à string de jantar, com uma quebra de linha no final de cada prato. Muda o tipo de prato
     #para um emoji, para economizar caracteres.
     for plate in dayDinnerPlates:
-        tweet_string_dinner +=  wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
+        try:
+            if(plate[0] != "Atenção o cardápio poderá sofrer alteração sem comunicação prévia"):
+                tweet_string_dinner += wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
+        except KeyError as e:
+            print("Erro na chave:", e)
 
     #confere se a string final é maior que 220 caracteres. Se for, tenta abreviar o nome do dia da semana para apenas três letras
     if len(tweet_string_dinner)>=220:
@@ -199,17 +157,72 @@ def getDinnerSpecific(dinner, campusNome):
     #retorna a string já composta pelo cardápio do jantar
     return tweet_string_dinner
 
+# chama as funções de formatação dos tweets de almoço e jantar para um campus específico.
+# Também guarda o cardápio desse campus em um CSV toda segunda feira
+def getCardapioCampus(keyCampus):
+
+    campusName = campus[keyCampus]['nome']
+    campusArqName = campus[keyCampus]['nomeArq']
+
+    # cg.getCardapio acessa a url em que o cardápio está postado e devolve os dados em uma array de DataFrames:
+    # um para almoço e um para jantar
+    lunchAndDinner = cg.getCardapio(campus[keyCampus]["url"])
+    lunchDF = lunchAndDinner[0]
+    dinnerDF = lunchAndDinner[1]
+
+    # retornam os tweets que serão postados
+    string_lunch = createLunchTweet(lunchDF, campusName)
+    string_dinner = createDinnerTweet(dinnerDF, campusName)
+
+
+    #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
+    if diaDaSemana == "Segunda-Feira":
+        
+        if not path.exists(f"/data/cardapiomes{month}-{year}-{campusArqName}.csv"):
+
+            cardapiomes = open(f"/data/cardapiomes{month}-{year}-{campusArqName}.csv", 'w', encoding='utf-8')
+            cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
+
+        with open(f"/data/cardapiomes{month}-{year}-{campusArqName}.csv", 'a', encoding='utf-8') as cardapiomes:
+
+            cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+            for index, row in lunchDF.iterrows():
+                i = 0
+                tipoPrato = row['ALMOÇO']
+                for column in lunchDF:
+                    if column != 'ALMOÇO':
+                        columnCompleteDate = completeDay+dt.timedelta(days=i)
+                        columnDate = columnCompleteDate.strftime("%d-%m-%Y")
+                        cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Almoço", campusArqName])
+                        i+=1
+
+            for index, row in dinnerDF.iterrows():
+                j = 0
+                tipoPrato = row['JANTAR']
+                for column in dinnerDF:
+                    if column != 'JANTAR':
+                        columnCompleteDate = completeDay+dt.timedelta(days=j)
+                        columnDate = columnCompleteDate.strftime("%d-%m-%Y")
+                        cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Jantar", campusArqName])
+                        j+=1
+
+    print("tweets criados")
+    return [string_lunch, string_dinner]
+
+
 strings_ifcspv = getCardapioCampus("IFCSPV")
 strings_fundao = getCardapioCampus("fundao")
 
-#função que divide o tweet em dois, com as duas últimas linhas em um segundo tweet
+#utilitário que divide o tweet em dois, com as duas últimas linhas em um segundo tweet
 def splitTweet(tweet):
     tweet1 = "\n".join(tweet.split("\n")[0:-3])
     tweet2 = tweet.split("\n",6)[6]
     return [tweet1, tweet2]
 
 #função que posta os tweets. Ela confere se cada tweet da array possui menos de 220 caracteres.
-#Se o tweet ultrapassar os 220 caracteres a função chama a função splitTweet
+#Se o tweet ultrapassar os 220 caracteres, chama a função splitTweet
 # e posta os tweets divididos com o segundo como resposta do primeiro.
 def postTweets(stringArray):
     for string in stringArray:
@@ -221,9 +234,9 @@ def postTweets(stringArray):
             api.update_status(string)
 
 
+#chama a função postTweets para as arrays de tweets dos dois campus
 def cronjob():
     print("running cronjob")
-    #chama a função postTweets para as arrays de tweets dos dois campus
     postTweets(strings_ifcspv)
     postTweets(strings_fundao)
 
