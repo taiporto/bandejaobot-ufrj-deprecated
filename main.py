@@ -177,36 +177,38 @@ def getCardapioCampus(keyCampus):
 
     #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
     if diaDaSemana == "Segunda-Feira":
-        
-        if not path.exists(f"/data/cardapiomes{month}-{year}-{campusArqName}.csv"):
+        try:
+            if not path.exists(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv"):
 
-            cardapiomes = open(f"/data/cardapiomes{month}-{year}-{campusArqName}.csv", 'w', encoding='utf-8')
-            cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-            cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
+                cardapiomes = open(f"/data/cardapiomes{month}-{year}-{campusArqName}.csv", 'w', encoding='utf-8')
+                cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
 
-        with open(f"/data/cardapiomes{month}-{year}-{campusArqName}.csv", 'a', encoding='utf-8') as cardapiomes:
+            with open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'a', encoding='utf-8') as cardapiomes:
 
-            cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-            for index, row in lunchDF.iterrows():
-                i = 0
-                tipoPrato = row['ALMOÇO']
-                for column in lunchDF:
-                    if column != 'ALMOÇO':
-                        columnCompleteDate = completeDay+dt.timedelta(days=i)
-                        columnDate = columnCompleteDate.strftime("%d-%m-%Y")
-                        cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Almoço", campusArqName])
-                        i+=1
+                for index, row in lunchDF.iterrows():
+                    i = 0
+                    tipoPrato = row['ALMOÇO']
+                    for column in lunchDF:
+                        if column != 'ALMOÇO':
+                            columnCompleteDate = completeDay+dt.timedelta(days=i)
+                            columnDate = columnCompleteDate.strftime("%d-%m-%Y")
+                            cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Almoço", campusArqName])
+                            i+=1
 
-            for index, row in dinnerDF.iterrows():
-                j = 0
-                tipoPrato = row['JANTAR']
-                for column in dinnerDF:
-                    if column != 'JANTAR':
-                        columnCompleteDate = completeDay+dt.timedelta(days=j)
-                        columnDate = columnCompleteDate.strftime("%d-%m-%Y")
-                        cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Jantar", campusArqName])
-                        j+=1
+                for index, row in dinnerDF.iterrows():
+                    j = 0
+                    tipoPrato = row['JANTAR']
+                    for column in dinnerDF:
+                        if column != 'JANTAR':
+                            columnCompleteDate = completeDay+dt.timedelta(days=j)
+                            columnDate = columnCompleteDate.strftime("%d-%m-%Y")
+                            cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Jantar", campusArqName])
+                            j+=1
+        except Exception as e:
+            print("Erro: "+ e)
 
     print("tweets criados")
     return [string_lunch, string_dinner]
