@@ -23,4 +23,4 @@ jobs:
           TOKEN: ${{secrets.TOKEN}}
           TOKEN_SECRET: ${{secrets.TOKEN_SECRET}}
         run: |
-          python3 main.py
+          sudo python3 main.py
