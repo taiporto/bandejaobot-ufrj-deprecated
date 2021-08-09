@@ -1,0 +1,99 @@
+nome_prato;tipo_prato;dia_semana;dia_mes;turno;campus
+Couve-flor refogada,Guarnição 1,Segunda-Feira,09-08-2021,Almoço,Fundao
+Acelga ao alho,Guarnição 1,Terça-Feira,10-08-2021,Almoço,Fundao
+Duo de repolho á siciliana,Guarnição 1,Quarta-Feira,11-08-2021,Almoço,Fundao
+Abobrinha com orégano,Guarnição 1,Quinta-Feira,12-08-2021,Almoço,Fundao
+Cenoura com cebolinha,Guarnição 1,Sexta-Feira,13-08-2021,Almoço,Fundao
+Rattatouille,Guarnição 1,Sábado,14-08-2021,Almoço,Fundao
+Chicória refogada,Guarnição 1,Domingo,15-08-2021,Almoço,Fundao
+Polenta,Guarnição 2,Segunda-Feira,09-08-2021,Almoço,Fundao
+Beterraba com endro,Guarnição 2,Terça-Feira,10-08-2021,Almoço,Fundao
+Aipim com salsa,Guarnição 2,Quarta-Feira,11-08-2021,Almoço,Fundao
+Quibebe,Guarnição 2,Quinta-Feira,12-08-2021,Almoço,Fundao
+Quiabo ao alho,Guarnição 2,Sexta-Feira,13-08-2021,Almoço,Fundao
+Batata palha,Guarnição 2,Sábado,14-08-2021,Almoço,Fundao
+Farofa de cenoura,Guarnição 2,Domingo,15-08-2021,Almoço,Fundao
+Frango à Provençal,Prato Principal,Segunda-Feira,09-08-2021,Almoço,Fundao
+Carne ao molho de pimentões,Prato Principal,Terça-Feira,10-08-2021,Almoço,Fundao
+Filé de sobrecoxa,Prato Principal,Quarta-Feira,11-08-2021,Almoço,Fundao
+Goulash ,Prato Principal,Quinta-Feira,12-08-2021,Almoço,Fundao
+Frango à Pizzaiolo ,Prato Principal,Sexta-Feira,13-08-2021,Almoço,Fundao
+Estrogonofe de carne,Prato Principal,Sábado,14-08-2021,Almoço,Fundao
+Sobrecoxa assada,Prato Principal,Domingo,15-08-2021,Almoço,Fundao
+Caçarola de feijão vermelho,Prato Vegano,Segunda-Feira,09-08-2021,Almoço,Fundao
+Kafta de soja,Prato Vegano,Terça-Feira,10-08-2021,Almoço,Fundao
+Curry vegetariano,Prato Vegano,Quarta-Feira,11-08-2021,Almoço,Fundao
+Bolo de batata com proteína de soja,Prato Vegano,Quinta-Feira,12-08-2021,Almoço,Fundao
+Quibe de legumes,Prato Vegano,Sexta-Feira,13-08-2021,Almoço,Fundao
+Estrogonofe de berinjela,Prato Vegano,Sábado,14-08-2021,Almoço,Fundao
+Bobó de grão de bico,Prato Vegano,Domingo,15-08-2021,Almoço,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Segunda-Feira,09-08-2021,Almoço,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Terça-Feira,10-08-2021,Almoço,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Quarta-Feira,11-08-2021,Almoço,Fundao
+Arroz brancoFeijão carioca,Acompanhamento,Quinta-Feira,12-08-2021,Almoço,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Sexta-Feira,13-08-2021,Almoço,Fundao
+Arroz brancoFeijão vermelho,Acompanhamento,Sábado,14-08-2021,Almoço,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Domingo,15-08-2021,Almoço,Fundao
+Maçã,Sobremesa ,Segunda-Feira,09-08-2021,Almoço,Fundao
+Paçoca,Sobremesa ,Terça-Feira,10-08-2021,Almoço,Fundao
+Banana,Sobremesa ,Quarta-Feira,11-08-2021,Almoço,Fundao
+Laranja,Sobremesa ,Quinta-Feira,12-08-2021,Almoço,Fundao
+Tangerina,Sobremesa ,Sexta-Feira,13-08-2021,Almoço,Fundao
+Maçã,Sobremesa ,Sábado,14-08-2021,Almoço,Fundao
+Banana,Sobremesa ,Domingo,15-08-2021,Almoço,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Segunda-Feira,09-08-2021,Almoço,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Terça-Feira,10-08-2021,Almoço,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Quarta-Feira,11-08-2021,Almoço,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Quinta-Feira,12-08-2021,Almoço,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Sexta-Feira,13-08-2021,Almoço,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Sábado,14-08-2021,Almoço,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Domingo,15-08-2021,Almoço,Fundao
+Duo de repolho,Guarnição 1,Segunda-Feira,09-08-2021,Jantar,Fundao
+Caponata de abobrinha,Guarnição 1,Terça-Feira,10-08-2021,Jantar,Fundao
+Vagem refogada,Guarnição 1,Quarta-Feira,11-08-2021,Jantar,Fundao
+Quiabo refogado,Guarnição 1,Quinta-Feira,12-08-2021,Jantar,Fundao
+Chicória refogada,Guarnição 1,Sexta-Feira,13-08-2021,Jantar,Fundao
+Repolho roxo com gengibre,Guarnição 1,Sábado,14-08-2021,Jantar,Fundao
+Aipim cozido,Guarnição 1,Domingo,15-08-2021,Jantar,Fundao
+Espaguete ao alho e óleo ,Guarnição 2,Segunda-Feira,09-08-2021,Jantar,Fundao
+Couve-flor com cheiro verde,Guarnição 2,Terça-Feira,10-08-2021,Jantar,Fundao
+Cenoura com cebolinha,Guarnição 2,Quarta-Feira,11-08-2021,Jantar,Fundao
+Polenta com parmesão / vegano sem queijo,Guarnição 2,Quinta-Feira,12-08-2021,Jantar,Fundao
+Panachê de legumes,Guarnição 2,Sexta-Feira,13-08-2021,Jantar,Fundao
+Batata rústica,Guarnição 2,Sábado,14-08-2021,Jantar,Fundao
+Abobrinha refogada,Guarnição 2,Domingo,15-08-2021,Jantar,Fundao
+Carne ao molho de vinho,Prato Principal,Segunda-Feira,09-08-2021,Jantar,Fundao
+Frango ao molho de champignon,Prato Principal,Terça-Feira,10-08-2021,Jantar,Fundao
+Carne ao molho de mostarda,Prato Principal,Quarta-Feira,11-08-2021,Jantar,Fundao
+Frango assado,Prato Principal,Quinta-Feira,12-08-2021,Jantar,Fundao
+Gourjão de peixe,Prato Principal,Sexta-Feira,13-08-2021,Jantar,Fundao
+Mignon suíno ao molho espanhol,Prato Principal,Sábado,14-08-2021,Jantar,Fundao
+Carne ao molho espanhol,Prato Principal,Domingo,15-08-2021,Jantar,Fundao
+Quibe de quinoa com cenoura e espinafre,Prato Vegano,Segunda-Feira,09-08-2021,Jantar,Fundao
+Hambúrguer de vegetais com molho de tomate e ervas finas,Prato Vegano,Terça-Feira,10-08-2021,Jantar,Fundao
+Cuscuz vegetariano,Prato Vegano,Quarta-Feira,11-08-2021,Jantar,Fundao
+Hambúrguer de lentilha,Prato Vegano,Quinta-Feira,12-08-2021,Jantar,Fundao
+Torta  de quinoa com espinafre,Prato Vegano,Sexta-Feira,13-08-2021,Jantar,Fundao
+Croquete de berinjela,Prato Vegano,Sábado,14-08-2021,Jantar,Fundao
+Panqueca de soja e cenoura,Prato Vegano,Domingo,15-08-2021,Jantar,Fundao
+Arroz brancoFeijão preto,Acompanhamento,Segunda-Feira,09-08-2021,Jantar,Fundao
+Arroz branco Feijão preto,Acompanhamento,Terça-Feira,10-08-2021,Jantar,Fundao
+Arroz branco Feijão preto,Acompanhamento,Quarta-Feira,11-08-2021,Jantar,Fundao
+Arroz brancoFeijão carioca,Acompanhamento,Quinta-Feira,12-08-2021,Jantar,Fundao
+Arroz branco Feijão preto,Acompanhamento,Sexta-Feira,13-08-2021,Jantar,Fundao
+Arroz branco Feijão vermelho,Acompanhamento,Sábado,14-08-2021,Jantar,Fundao
+Arroz branco Feijão preto,Acompanhamento,Domingo,15-08-2021,Jantar,Fundao
+Doce de leite com chocolate,Sobremesa ,Segunda-Feira,09-08-2021,Jantar,Fundao
+Banana,Sobremesa ,Terça-Feira,10-08-2021,Jantar,Fundao
+Maçã,Sobremesa ,Quarta-Feira,11-08-2021,Jantar,Fundao
+Laranja,Sobremesa ,Quinta-Feira,12-08-2021,Jantar,Fundao
+Pera,Sobremesa ,Sexta-Feira,13-08-2021,Jantar,Fundao
+Tangerina,Sobremesa ,Sábado,14-08-2021,Jantar,Fundao
+Maçã,Sobremesa ,Domingo,15-08-2021,Jantar,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Segunda-Feira,09-08-2021,Jantar,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Terça-Feira,10-08-2021,Jantar,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Quarta-Feira,11-08-2021,Jantar,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Quinta-Feira,12-08-2021,Jantar,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Sexta-Feira,13-08-2021,Jantar,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Sábado,14-08-2021,Jantar,Fundao
+Nossas preparações podem conter glúten   ,Atenção o cardápio poderá sofrer alteração sem comunicação prévia,Domingo,15-08-2021,Jantar,Fundao

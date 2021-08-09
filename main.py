@@ -175,7 +175,7 @@ def getCardapioCampus(keyCampus):
         try:
             if not path.exists(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv"):
 
-                cardapiomes = open(f"/data/cardapiomes{month}-{year}-{campusArqName}.csv", 'w', encoding='utf-8')
+                cardapiomes = open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'w', encoding='utf-8')
                 cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
 

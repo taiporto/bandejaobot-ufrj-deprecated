@@ -1,0 +1,99 @@
+nome_prato;tipo_prato;dia_semana;dia_mes;turno;campus
+FECHADO,Entrada,Segunda-Feira,09-08-2021,Almoço,IFCS-PV
+FECHADO,Entrada,Terça-Feira,10-08-2021,Almoço,IFCS-PV
+FECHADO,Entrada,Quarta-Feira,11-08-2021,Almoço,IFCS-PV
+FECHADO,Entrada,Quinta-Feira,12-08-2021,Almoço,IFCS-PV
+FECHADO,Entrada,Sexta-Feira,13-08-2021,Almoço,IFCS-PV
+FECHADO,Entrada,Sábado,14-08-2021,Almoço,IFCS-PV
+FECHADO,Entrada,Domingo,15-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Principal,Segunda-Feira,09-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Principal,Terça-Feira,10-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Principal,Quarta-Feira,11-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Principal,Quinta-Feira,12-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Principal,Sexta-Feira,13-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Principal,Sábado,14-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Principal,Domingo,15-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Vegetariano,Segunda-Feira,09-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Vegetariano,Terça-Feira,10-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Vegetariano,Quarta-Feira,11-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Vegetariano,Quinta-Feira,12-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Vegetariano,Sexta-Feira,13-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Vegetariano,Sábado,14-08-2021,Almoço,IFCS-PV
+FECHADO,Prato Vegetariano,Domingo,15-08-2021,Almoço,IFCS-PV
+FECHADO,Guarnição,Segunda-Feira,09-08-2021,Almoço,IFCS-PV
+FECHADO,Guarnição,Terça-Feira,10-08-2021,Almoço,IFCS-PV
+FECHADO,Guarnição,Quarta-Feira,11-08-2021,Almoço,IFCS-PV
+FECHADO,Guarnição,Quinta-Feira,12-08-2021,Almoço,IFCS-PV
+FECHADO,Guarnição,Sexta-Feira,13-08-2021,Almoço,IFCS-PV
+FECHADO,Guarnição,Sábado,14-08-2021,Almoço,IFCS-PV
+FECHADO,Guarnição,Domingo,15-08-2021,Almoço,IFCS-PV
+FECHADO,Acompanhamentos,Segunda-Feira,09-08-2021,Almoço,IFCS-PV
+FECHADO,Acompanhamentos,Terça-Feira,10-08-2021,Almoço,IFCS-PV
+FECHADO,Acompanhamentos,Quarta-Feira,11-08-2021,Almoço,IFCS-PV
+FECHADO,Acompanhamentos,Quinta-Feira,12-08-2021,Almoço,IFCS-PV
+FECHADO,Acompanhamentos,Sexta-Feira,13-08-2021,Almoço,IFCS-PV
+FECHADO,Acompanhamentos,Sábado,14-08-2021,Almoço,IFCS-PV
+FECHADO,Acompanhamentos,Domingo,15-08-2021,Almoço,IFCS-PV
+FECHADO,Sobremesa,Segunda-Feira,09-08-2021,Almoço,IFCS-PV
+FECHADO,Sobremesa,Terça-Feira,10-08-2021,Almoço,IFCS-PV
+FECHADO,Sobremesa,Quarta-Feira,11-08-2021,Almoço,IFCS-PV
+FECHADO,Sobremesa,Quinta-Feira,12-08-2021,Almoço,IFCS-PV
+FECHADO,Sobremesa,Sexta-Feira,13-08-2021,Almoço,IFCS-PV
+FECHADO,Sobremesa,Sábado,14-08-2021,Almoço,IFCS-PV
+FECHADO,Sobremesa,Domingo,15-08-2021,Almoço,IFCS-PV
+FECHADO,Refresco,Segunda-Feira,09-08-2021,Almoço,IFCS-PV
+FECHADO,Refresco,Terça-Feira,10-08-2021,Almoço,IFCS-PV
+FECHADO,Refresco,Quarta-Feira,11-08-2021,Almoço,IFCS-PV
+FECHADO,Refresco,Quinta-Feira,12-08-2021,Almoço,IFCS-PV
+FECHADO,Refresco,Sexta-Feira,13-08-2021,Almoço,IFCS-PV
+FECHADO,Refresco,Sábado,14-08-2021,Almoço,IFCS-PV
+FECHADO,Refresco,Domingo,15-08-2021,Almoço,IFCS-PV
+FECHADO,Entrada,Segunda-Feira,09-08-2021,Jantar,IFCS-PV
+FECHADO,Entrada,Terça-Feira,10-08-2021,Jantar,IFCS-PV
+FECHADO,Entrada,Quarta-Feira,11-08-2021,Jantar,IFCS-PV
+FECHADO,Entrada,Quinta-Feira,12-08-2021,Jantar,IFCS-PV
+FECHADO,Entrada,Sexta-Feira,13-08-2021,Jantar,IFCS-PV
+FECHADO,Entrada,Sábado,14-08-2021,Jantar,IFCS-PV
+FECHADO,Entrada,Domingo,15-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Principal,Segunda-Feira,09-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Principal,Terça-Feira,10-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Principal,Quarta-Feira,11-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Principal,Quinta-Feira,12-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Principal,Sexta-Feira,13-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Principal,Sábado,14-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Principal,Domingo,15-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Vegetariano,Segunda-Feira,09-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Vegetariano,Terça-Feira,10-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Vegetariano,Quarta-Feira,11-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Vegetariano,Quinta-Feira,12-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Vegetariano,Sexta-Feira,13-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Vegetariano,Sábado,14-08-2021,Jantar,IFCS-PV
+FECHADO,Prato Vegetariano,Domingo,15-08-2021,Jantar,IFCS-PV
+FECHADO,Guarnição,Segunda-Feira,09-08-2021,Jantar,IFCS-PV
+FECHADO,Guarnição,Terça-Feira,10-08-2021,Jantar,IFCS-PV
+FECHADO,Guarnição,Quarta-Feira,11-08-2021,Jantar,IFCS-PV
+FECHADO,Guarnição,Quinta-Feira,12-08-2021,Jantar,IFCS-PV
+FECHADO,Guarnição,Sexta-Feira,13-08-2021,Jantar,IFCS-PV
+FECHADO,Guarnição,Sábado,14-08-2021,Jantar,IFCS-PV
+FECHADO,Guarnição,Domingo,15-08-2021,Jantar,IFCS-PV
+FECHADO,Acompanhamentos,Segunda-Feira,09-08-2021,Jantar,IFCS-PV
+FECHADO,Acompanhamentos,Terça-Feira,10-08-2021,Jantar,IFCS-PV
+FECHADO,Acompanhamentos,Quarta-Feira,11-08-2021,Jantar,IFCS-PV
+FECHADO,Acompanhamentos,Quinta-Feira,12-08-2021,Jantar,IFCS-PV
+FECHADO,Acompanhamentos,Sexta-Feira,13-08-2021,Jantar,IFCS-PV
+FECHADO,Acompanhamentos,Sábado,14-08-2021,Jantar,IFCS-PV
+FECHADO,Acompanhamentos,Domingo,15-08-2021,Jantar,IFCS-PV
+FECHADO,Sobremesa,Segunda-Feira,09-08-2021,Jantar,IFCS-PV
+FECHADO,Sobremesa,Terça-Feira,10-08-2021,Jantar,IFCS-PV
+FECHADO,Sobremesa,Quarta-Feira,11-08-2021,Jantar,IFCS-PV
+FECHADO,Sobremesa,Quinta-Feira,12-08-2021,Jantar,IFCS-PV
+FECHADO,Sobremesa,Sexta-Feira,13-08-2021,Jantar,IFCS-PV
+FECHADO,Sobremesa,Sábado,14-08-2021,Jantar,IFCS-PV
+FECHADO,Sobremesa,Domingo,15-08-2021,Jantar,IFCS-PV
+FECHADO,Refresco,Segunda-Feira,09-08-2021,Jantar,IFCS-PV
+FECHADO,Refresco,Terça-Feira,10-08-2021,Jantar,IFCS-PV
+FECHADO,Refresco,Quarta-Feira,11-08-2021,Jantar,IFCS-PV
+FECHADO,Refresco,Quinta-Feira,12-08-2021,Jantar,IFCS-PV
+FECHADO,Refresco,Sexta-Feira,13-08-2021,Jantar,IFCS-PV
+FECHADO,Refresco,Sábado,14-08-2021,Jantar,IFCS-PV
+FECHADO,Refresco,Domingo,15-08-2021,Jantar,IFCS-PV
