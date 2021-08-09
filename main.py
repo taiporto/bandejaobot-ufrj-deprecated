@@ -203,7 +203,7 @@ def getCardapioCampus(keyCampus):
                             cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Jantar", campusArqName])
                             j+=1
         except Exception as e:
-            print("Erro: "+ e)
+            print(e)
 
     print("tweets criados")
     return [string_lunch, string_dinner]
