@@ -177,15 +177,15 @@ def getCardapioCampus(keyCampus):
     if True:
         try:
             relative_path = f"/data/cardapiomes{month}-{year}-{campusArqName}.csv"
-            path = os.path.abspath(os.path.dirname(__file__)) + relative_path
+            final_path = os.path.abspath(os.path.dirname(__file__)) + relative_path
             
-            if not path.exists(path):
+            if not path.exists(final_path):
 
-                cardapiomes = open(path, 'w', encoding='utf-8')
+                cardapiomes = open(final_path, 'w', encoding='utf-8')
                 cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
 
-            with open(path, 'a', encoding='utf-8') as cardapiomes:
+            with open(final_path, 'a', encoding='utf-8') as cardapiomes:
 
                 cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
