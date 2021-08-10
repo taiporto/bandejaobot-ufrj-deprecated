@@ -181,15 +181,12 @@ def getCardapioCampus(keyCampus):
     #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
     if True:
         try:
-            relative_path = f"../../../../data/cardapiomes{month}-{year}-{campusArqName}.csv"
+            relative_path = f"/data/cardapiomes{month}-{year}-{campusArqName}.csv"
             final_path = os.path.abspath(os.path.dirname(__file__)) + relative_path
-            print(final_path)
             if not path.exists(final_path):
-                print("doesnt exist yet")
                 cardapiomes = open(final_path, 'w', encoding='utf-8')
                 cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
-                print("written")
 
             with open(final_path, 'a', encoding='utf-8') as cardapiomes:
 
@@ -243,16 +240,13 @@ def postTweets(stringArray):
         if len(string) >= 220:
             newTweets = splitTweet(string)
             firstTweet = api.update_status(newTweets[0])
-            print("posted")
             # api.update_status('@bandejaobotufrj'+newTweets[1], firstTweet.id_str)
         else:
-            print("posted")
             # api.update_status(string)
 
 
 #chama a função postTweets para as arrays de tweets dos dois campus
 def cronjob():
-    print("running cronjob")
     postTweets(strings_ifcspv)
     postTweets(strings_fundao)
 
