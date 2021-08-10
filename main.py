@@ -185,10 +185,11 @@ def getCardapioCampus(keyCampus):
             final_path = os.path.abspath(os.path.dirname(__file__)) + relative_path
             
             if not path.exists(final_path):
-
+                print("doesnt exist yet")
                 cardapiomes = open(final_path, 'w', encoding='utf-8')
                 cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
+                print("written")
 
             with open(final_path, 'a', encoding='utf-8') as cardapiomes:
 
@@ -203,6 +204,8 @@ def getCardapioCampus(keyCampus):
                             columnDate = columnCompleteDate.strftime("%d-%m-%Y")
                             cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Almoço", campusArqName])
                             i+=1
+                
+                print("lunch written")
 
                 for index, row in dinnerDF.iterrows():
                     j = 0
@@ -213,6 +216,9 @@ def getCardapioCampus(keyCampus):
                             columnDate = columnCompleteDate.strftime("%d-%m-%Y")
                             cardapio_writer.writerow([row[column], tipoPrato, column, columnDate, "Jantar", campusArqName])
                             j+=1
+                            
+                print("dinner written")
+                
         except Exception as e:
             print(e)
 
