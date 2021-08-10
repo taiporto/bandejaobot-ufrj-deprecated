@@ -174,7 +174,7 @@ def getCardapioCampus(keyCampus):
 
 
     #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
-    if diaDaSemana == "Segunda-Feira":
+    if True:
         try:
             relative_path = f"/data/cardapiomes{month}-{year}-{campusArqName}.csv"
             path = os.path.abspath(os.path.dirname(__file__)) + relative_path
