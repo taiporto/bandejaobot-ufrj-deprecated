@@ -12,6 +12,9 @@ import cardapiogetter as cg
 
 load_dotenv()
 
+# Configurar path
+dir = os.path.dirname(__file__)
+
 # Configurar fuso horário
 tz = timezone('America/Sao_Paulo')
 
@@ -173,13 +176,16 @@ def getCardapioCampus(keyCampus):
     #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
     if diaDaSemana == "Segunda-Feira":
         try:
-            if not path.exists(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv"):
+            relative_path = f"/data/cardapiomes{month}-{year}-{campusArqName}.csv"
+            path = os.path.abspath(os.path.dirname(__file__)) + relative_path
+            
+            if not path.exists(path):
 
-                cardapiomes = open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'w', encoding='utf-8')
+                cardapiomes = open(path, 'w', encoding='utf-8')
                 cardapio_writer = csv.writer(cardapiomes, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 cardapio_writer.writerow(["nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno", "campus"])
 
-            with open(f"./data/cardapiomes{month}-{year}-{campusArqName}.csv", 'a', encoding='utf-8') as cardapiomes:
+            with open(path, 'a', encoding='utf-8') as cardapiomes:
 
                 cardapio_writer = csv.writer(cardapiomes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
@@ -226,9 +232,11 @@ def postTweets(stringArray):
         if len(string) >= 220:
             newTweets = splitTweet(string)
             firstTweet = api.update_status(newTweets[0])
-            api.update_status('@bandejaobotufrj'+newTweets[1], firstTweet.id_str)
+            print("posted")
+            # api.update_status('@bandejaobotufrj'+newTweets[1], firstTweet.id_str)
         else:
-            api.update_status(string)
+            print("posted")
+            # api.update_status(string)
 
 #chama a função postTweets para as arrays de tweets dos dois campus
 postTweets(strings_ifcspv)
