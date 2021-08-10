@@ -183,7 +183,7 @@ def getCardapioCampus(keyCampus):
         try:
             relative_path = f"/data/cardapiomes{month}-{year}-{campusArqName}.csv"
             final_path = os.path.abspath(os.path.dirname(__file__)) + relative_path
-            
+            print(final_path)
             if not path.exists(final_path):
                 print("doesnt exist yet")
                 cardapiomes = open(final_path, 'w', encoding='utf-8')
