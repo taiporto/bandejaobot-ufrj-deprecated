@@ -240,9 +240,9 @@ def postTweets(stringArray):
         if len(string) >= 220:
             newTweets = splitTweet(string)
             firstTweet = api.update_status(newTweets[0])
-            # api.update_status('@bandejaobotufrj'+newTweets[1], firstTweet.id_str)
+            api.update_status('@bandejaobotufrj'+newTweets[1], firstTweet.id_str)
         else:
-            # api.update_status(string)
+            api.update_status(string)
 
 
 #chama a função postTweets para as arrays de tweets dos dois campus
