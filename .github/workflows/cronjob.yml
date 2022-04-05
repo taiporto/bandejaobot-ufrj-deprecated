@@ -1,7 +1,7 @@
 name: Run main.py everyday
 on:
   schedule:
-    - cron: "40 11 * * *" #Run everyday at 11:40AM UTC (8:40AM BRT)
+    - cron: "59 11 * * *" #Run everyday at 11:59AM UTC (8:59AM BRT)
 
 jobs:
   run:
@@ -11,7 +11,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: "3.x"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
