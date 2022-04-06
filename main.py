@@ -106,7 +106,7 @@ def createLunchTweet(lunch, campusNome):
     #para economizar caracteres.
     for plate in dayLunchPlates:
         try:
-            if(plate[0] != "Atenção o cardápio poderá sofrer alteração sem comunicação prévia"):
+            if("cardápio poderá sofrer alteração sem comunicação prévia" not in plate[0]):
                 tweet_string_lunch += wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
         except KeyError as e:
             print("Erro na chave:", e)
@@ -142,7 +142,7 @@ def createDinnerTweet(dinner, campusNome):
     #para um emoji, para economizar caracteres.
     for plate in dayDinnerPlates:
         try:
-            if(plate[0] != "Atenção o cardápio poderá sofrer alteração sem comunicação prévia"):
+            if("cardápio poderá sofrer alteração sem comunicação prévia" not in plate[0]):
                 tweet_string_dinner += wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
         except KeyError as e:
             print("Erro na chave:", e)
@@ -228,8 +228,9 @@ strings_fundao = getCardapioCampus("fundao")
 
 #utilitário que divide o tweet em dois, com as duas últimas linhas em um segundo tweet
 def splitTweet(tweet):
-    tweet1 = "\n".join(tweet.split("\n")[0:-3])
-    tweet2 = tweet.split("\n",6)[6]
+    splitTweet = tweet.split("\n")
+    tweet1 = "\n".join(splitTweet[0:-3])
+    tweet2 = "\n".join(splitTweet[-3:])
     return [tweet1, tweet2]
 
 #função que posta os tweets. Ela confere se cada tweet da array possui menos de 220 caracteres.
@@ -243,7 +244,6 @@ def postTweets(stringArray):
             api.update_status('@bandejaobotufrj'+newTweets[1], firstTweet.id_str)
         else:
             api.update_status(string)
-
 
 #chama a função postTweets para as arrays de tweets dos dois campus
 def cronjob():
