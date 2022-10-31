@@ -225,7 +225,12 @@ strings_fundao = getCardapioCampus("fundao")
 def splitTweet(tweet):
     splitTweet = tweet.split("\n")
     tweet1 = "\n".join(splitTweet[0:-3])
-    tweet2 = "\n".join(splitTweet[-3:])
+    if len(tweet1) >= 204:
+        tweet1 = "\n".join(splitTweet[0:-4])
+        tweet2 = "\n".join(splitTweet[-4:])
+    else:
+        tweet2 = "\n".join(splitTweet[-3:])
+        
     return [tweet1, tweet2]
 
 #função que posta os tweets. Ela confere se cada tweet da array possui menos de 220 caracteres.
@@ -233,7 +238,7 @@ def splitTweet(tweet):
 # e posta os tweets divididos com o segundo como resposta do primeiro.
 def postTweets(stringArray):
     for string in stringArray:
-        if len(string) >= 220:
+        if len(string) >= 204:
             newTweets = splitTweet(string)
             firstTweet = api.update_status(newTweets[0])
             api.update_status('@bandejaobotufrj'+newTweets[1], firstTweet.id_str)
