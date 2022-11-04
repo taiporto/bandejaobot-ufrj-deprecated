@@ -1,0 +1,23 @@
+name: Run main.py once
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+          cache: "pip"
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run main script
+        env:
+          CONSUMER_KEY: ${{secrets.CONSUMER_KEY}}
+          CONSUMER_SECRET: ${{secrets.CONSUMER_SECRET}}
+          TOKEN: ${{secrets.TOKEN}}
+          TOKEN_SECRET: ${{secrets.TOKEN_SECRET}}
+        run: |
+          python3 main.py
