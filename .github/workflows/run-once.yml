@@ -1,4 +1,5 @@
 name: Run main.py once
+on: push
 
 jobs:
   run:
