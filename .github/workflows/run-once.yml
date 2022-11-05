@@ -1,5 +1,5 @@
 name: Run main.py once
-on: push
+on: workflow_dispatch
 
 jobs:
   run:
