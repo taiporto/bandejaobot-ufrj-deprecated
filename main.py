@@ -241,7 +241,7 @@ def postTweets(stringArray):
         if len(string) >= 204:
             newTweets = splitTweet(string)
             firstTweet = api.update_status(newTweets[0])
-            api.update_status(newTweets[1], firstTweet.id_str)
+            api.update_status(status=newTweets[1], in_reply_to_status_id=firstTweet.id_str)
         else:
             api.update_status(string)
 
