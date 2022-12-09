@@ -2,7 +2,7 @@ APScheduler==3.9.1
 async-timeout==4.0.2
 beautifulsoup4==4.11.1
 bs4==0.0.1
-certifi==2022.9.24
+certifi==2022.12.7
 chardet==5.0.0
 charset-normalizer==2.1.1
 Deprecated==1.2.13
