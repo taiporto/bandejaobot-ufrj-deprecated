@@ -107,7 +107,6 @@ def createLunchTweet(lunch, campusNome):
     for plate in dayLunchPlates:
         try:
             if("cardápio poderá sofrer alteração sem comunicação prévia" not in plate[0]):
-              
               if plate[0] in wordToEmoji: 
                 tweet_string_lunch += wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
               elif "Prato Principal" in plate[0]:
@@ -147,7 +146,10 @@ def createDinnerTweet(dinner, campusNome):
     for plate in dayDinnerPlates:
         try:
             if("cardápio poderá sofrer alteração sem comunicação prévia" not in plate[0]):
-                tweet_string_dinner += wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
+                if plate[0] in wordToEmoji: 
+                    tweet_string_dinner += wordToEmoji[plate[0]]+" -> "+plate[1]+"\n"
+                elif "Prato Principal" in plate[0]:
+                    tweet_string_dinner += wordToEmoji["Prato Principal"]+" ->"+plate[1]+"\n"
         except KeyError as e:
             print("Erro na chave:", e)
 
