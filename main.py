@@ -102,11 +102,9 @@ def createLunchTweet(lunch, campusNome):
   #designa o almoço do dia, procurando os resultados da coluna 'ALMOÇO' (que possui informação de tipo de prato) e da coluna
   #do dia da semana correspondente, que possui o nome do prato a ser servido. Adiciona os resultados a uma lista.
 
-  dayLunch = lunch.iloc[:,
-                        lunch.columns.str.contains(diaDaSemana)
-                        | lunch.columns.str.match('Almoço')]
-
+  dayLunch = lunch.filter(regex=r'ALMOÇO|' + diaDaSemana, axis=1)
   dayLunchPlates = dayLunch.values.tolist()
+  print("DEBUG DAY LUNCH: ", dayLunchPlates)
 
   #itera por cada prato da lista dayLunchPlates, que é uma outra lista composta por tipo de prato e nome do prato, e adiciona
   #as informações à string de almoço, com uma quebra de linha no final de cada prato. Muda o tipo de prato para um emoji,
@@ -147,9 +145,7 @@ def createDinnerTweet(dinner, campusNome):
 
   #designa o jantar do dia, procurando os resultados da coluna 'ALMOÇO' (que possui informação de tipo de prato) e da coluna
   #do dia da semana correspondente, que possui o nome do prato a ser servido. Adiciona os resultados a uma lista.
-  dayDinner = dinner.iloc[:,
-                          dinner.columns.str.contains(diaDaSemana)
-                          | dinner.columns.str.match('Jantar')]
+  dayDinner = dinner.filter(regex=r'JANTAR|' + diaDaSemana, axis=1)
   dayDinnerPlates = dayDinner.values.tolist()
 
   #itera por cada prato da lista dayDinnerPlates, que é ainda outra lista composta por tipo de prato e nome do prato,
@@ -199,62 +195,6 @@ def getCardapioCampus(keyCampus):
   string_lunch = createLunchTweet(lunchDF, campusName)
   string_dinner = createDinnerTweet(dinnerDF, campusName)
 
-  #guarda o cardápio da semana em um csv separado caso seja segunda-feira.
-  if diaDaSemana == "Segunda-Feira":
-    try:
-      relative_path = f"/data/cardapiomes{month}-{year}-{campusArqName}.csv"
-      final_path = os.path.abspath(os.path.dirname(__file__)) + relative_path
-      if not path.exists(final_path):
-        cardapiomes = open(final_path, 'w', encoding='utf-8')
-        cardapio_writer = csv.writer(cardapiomes,
-                                     delimiter=';',
-                                     quotechar='"',
-                                     quoting=csv.QUOTE_MINIMAL)
-        cardapio_writer.writerow([
-          "nome_prato", "tipo_prato", "dia_semana", "dia_mes", "turno",
-          "campus"
-        ])
-
-      with open(final_path, 'a', encoding='utf-8') as cardapiomes:
-
-        cardapio_writer = csv.writer(cardapiomes,
-                                     delimiter=',',
-                                     quotechar='"',
-                                     quoting=csv.QUOTE_MINIMAL)
-
-        for index, row in lunchDF.iterrows():
-          i = 0
-          tipoPrato = row['ALMOÇO']
-          for column in lunchDF:
-            if column != 'ALMOÇO':
-              columnCompleteDate = completeDay + dt.timedelta(days=i)
-              columnDate = columnCompleteDate.strftime("%d-%m-%Y")
-              cardapio_writer.writerow([
-                row[column], tipoPrato, column, columnDate, "Almoço",
-                campusArqName
-              ])
-              i += 1
-
-        print("lunch written")
-
-        for index, row in dinnerDF.iterrows():
-          j = 0
-          tipoPrato = row['JANTAR']
-          for column in dinnerDF:
-            if column != 'JANTAR':
-              columnCompleteDate = completeDay + dt.timedelta(days=j)
-              columnDate = columnCompleteDate.strftime("%d-%m-%Y")
-              cardapio_writer.writerow([
-                row[column], tipoPrato, column, columnDate, "Jantar",
-                campusArqName
-              ])
-              j += 1
-
-        print("dinner written")
-
-    except Exception as e:
-      print(e)
-
   print("tweets criados")
   return [string_lunch, string_dinner]
 
@@ -280,7 +220,6 @@ def splitTweet(tweet):
 #Se o tweet ultrapassar os 220 caracteres, chama a função splitTweet
 # e posta os tweets divididos com o segundo como resposta do primeiro.
 def postTweets(stringArray):
-
   for string in stringArray:
     if len(string) >= 204:
       newTweets = splitTweet(string)
