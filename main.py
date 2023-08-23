@@ -19,12 +19,7 @@ dir = os.path.dirname(__file__)
 tz = timezone('America/Sao_Paulo')
 
 # Authenticate to Twitter
-auth = tweepy.OAuthHandler(os.environ['CONSUMER_KEY'],
-                           os.environ['CONSUMER_SECRET'])
-auth.set_access_token(os.environ['TOKEN'], os.environ['TOKEN_SECRET'])
-
-# Create API object
-api = tweepy.API(auth)
+client = tweepy.Client(os.environ['BEARER_TOKEN'], os.environ['CONSUMER_KEY'], os.environ['CONSUMER_SECRET'], os.environ['TOKEN'], os.environ['TOKEN_SECRET'])
 
 #dicionário para "traduzir" os dias da semana de modo que o código possa achar a header correta
 diasSemana = {
@@ -223,11 +218,11 @@ def postTweets(stringArray):
   for string in stringArray:
     if len(string) >= 204:
       newTweets = splitTweet(string)
-      firstTweet = api.update_status(newTweets[0])
-      api.update_status(status=newTweets[1],
-                        in_reply_to_status_id=firstTweet.id_str)
+      firstTweet = client.create_tweet(text=newTweets[0])
+      client.create_tweet(text=newTweets[1],
+                        in_reply_to_tweet_id=firstTweet.data['id'])
     else:
-      api.update_status(string)
+      client.create_tweet(text=string)
 
 
 #chama a função postTweets para as arrays de tweets dos dois campus
