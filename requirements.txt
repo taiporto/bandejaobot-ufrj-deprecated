@@ -34,7 +34,7 @@ spotipy==2.21.0
 tweepy==4.14.0
 tzdata==2022.6
 tzlocal==4.2
-urllib3==1.26.12
+urllib3==1.26.18
 webencodings==0.5.1
 wrapt==1.14.1
 wrapt-timeout-decorator==1.3.12.2
