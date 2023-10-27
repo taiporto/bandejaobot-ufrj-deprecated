@@ -6,7 +6,6 @@ backports.zoneinfo==0.2.1
 bcrypt==3.1.7
 beautifulsoup4==4.11.1
 blinker==1.4
-Brlapi==0.7.0
 bs4==0.0.1
 certifi==2022.9.24
 chardet==5.0.0
@@ -99,7 +98,6 @@ tzlocal==4.2
 ubuntu-advantage-tools==8001
 ubuntu-drivers-common==0.0.0
 ufw==0.36
-ulauncher==5.15.4
 unattended-upgrades==0.1
 urllib3==1.26.12
 usb-creator==0.3.7
