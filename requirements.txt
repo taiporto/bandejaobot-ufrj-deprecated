@@ -58,7 +58,7 @@ pandas==1.5.1
 paramiko==2.6.0
 pbr==5.11.1
 pexpect==4.6.0
-Pillow==7.0.0
+Pillow==10.0.1
 protobuf==3.6.1
 pry.py==0.1.1
 pycairo==1.16.2
