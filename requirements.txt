@@ -1,7 +1,6 @@
 ansible==6.7.0
 ansible-core==2.13.13
 APScheduler==3.9.1
-apturl==0.5.2
 async-timeout==4.0.2
 backports.zoneinfo==0.2.1
 bcrypt==3.1.7
