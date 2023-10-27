@@ -1,4 +1,4 @@
-ansible==6.7.0
+ansible==7.0.0
 ansible-core==2.13.13
 APScheduler==3.9.1
 async-timeout==4.0.2
