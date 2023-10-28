@@ -12,7 +12,7 @@ dill==0.3.6
 html5lib==1.1
 idna==3.4
 lib-detect-testenv==2.0.3
-multiprocess==0.70.14dis
+multiprocess==0.70.14
 numpy==1.23.4
 oauthlib==3.2.2
 packaging==21.3
