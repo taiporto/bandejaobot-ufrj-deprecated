@@ -16,11 +16,6 @@ jobs:
       - name: Update pip
         run: |
           python3 -m pip install --upgrade pip
-      - name: Install pre-dependencies
-        run: |
-          sudo add-apt-repository ppa:deadsnakes/ppa -y
-          sudo apt-get update
-          sudo apt-get install -y python3.11-distutils
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi
