@@ -1,4 +1,3 @@
-# bandejaobot-ufrj
-Bot que faz scraping das [páginas](https://ru.ufrj.br/index.php/2014-07-24-00-55-59) em que as planilhas de cardápio dos RUs da UFRJ são postadas e trata os dados para postar os cardápios em forma de tweet. O bot posta todos os dias às 9h na conta de Twitter [@BandejaoBotUFRJ](https://twitter.com/BandejaoBotUFRJ)
+# [DEPRECATED] bandejaobot-ufrj
 
-<!--Ele também responde aos usuários que pedirem pelo cardápio marcando a conta do bot no Twitter e utilizando as keywords "almoço", "jantar" e os nomes dos campi. Os scripts referentes à função de resposta estão disponíveis em [bandejaobot-responder](https://github.com/liaporto/bandejaobot-responder).-->
+This project is not being mantained anymore. For the newer version of the bot, check [BandejãoBot UFRJ Bksy](https://github.com/taiporto/bandejaobot-ufrj-bsky).
